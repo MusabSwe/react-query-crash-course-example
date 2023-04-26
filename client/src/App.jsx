@@ -4,17 +4,23 @@ const posts = [
     { id: 1, title: "Post 1" },
     { id: 2, title: "Post 2" },
 ]
+// /posts -> ["posts"]
+// /posts/1 -> ["posts", post.id]
+// /posts/?authorId=1 -> ["posts", {authorId: 1}]
+// /posts/2/comments -> ["posts", post.id, "comments"]
 
 function App() {
     // used to access the states in the queries and handle posts when I click add a post
-    console.log(posts)
     const queryClient = useQueryClient();
     // UseQuery syntax 
     const postQuery = useQuery({
         // key of function
         queryKey: ["posts"],
         // promise function such as fetch data from server
-        queryFn: () => wait(1000).then(() => [...posts]),
+        queryFn: (obj) => wait(1000).then(() => {
+            console.log(obj)
+            return [...posts]
+        })
     })
 
     // UseMutation to change fetched query
