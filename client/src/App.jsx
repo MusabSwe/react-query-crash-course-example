@@ -14,6 +14,8 @@ function App() {
         // promise function such as fetch data from server
         queryFn: () => wait(1000).then(() => [...posts]),
     })
+    
+    // UseMutation to change fetched posts
     const newPostMutation = useMutation({
         mutationFn: title => {
             return wait(1000).then(() =>
