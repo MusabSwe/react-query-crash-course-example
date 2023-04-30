@@ -5,6 +5,7 @@ import PostsList2 from "./PostsList2";
 import { CreatePost } from "./CreatePost";
 import Post from "./Post";
 import { PostListPaginated } from "./PostListPaginated";
+import { PostListInfinite } from "./PostListInfinite";
 
 function App() {
     const [currentPage, setCurrentPage] = useState(<PostsList1 />)
@@ -25,6 +26,9 @@ function App() {
             </button>
             <button onClick={() => setCurrentPage(<PostListPaginated />)}>
                 Post List Paginated
+            </button>
+            <button onClick={() => setCurrentPage(<PostListInfinite />)}>
+                Post List Infinite 
             </button>
             <br />
             {currentPage}
